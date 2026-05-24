@@ -232,3 +232,56 @@ font-size: 18px;
   .sync-logo-wrapper { width: 42px; height: 42px; }
   .collab-x { font-size: 14px; margin-left: 16px; margin-right: 4px; }
 }
+
+/* ==========================================
+   🔒 Admin (관리자 페이지) 전용 스타일 
+========================================== */
+
+/* 1. 관리자 페이지 전체 배경 (검은색 + 중앙 정렬 뼈대) */
+.admin-page-bg {
+  background-color: #000000; /* 완전히 검은색 배경 */
+  color: #ffffff;            /* 글씨는 흰색으로 변경 */
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* ⭐️ 가로 기준 가운데 정렬 */
+  justify-content: flex-start;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+
+/* 2. 관리자 타이틀 (여기어때 잘난체 적용 + 가운데 정렬) */
+.admin-main-title {
+  font-family: 'yg-jalnan', sans-serif; /* 여기어때 잘난체 */
+  font-size: 34px;
+  color: #ffffff;
+  text-align: center;        /* ⭐️ 글자 가운데 정렬 */
+  margin-top: 10px;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
+}
+
+/* 3. 로그인 박스 및 콘텐츠 박스를 중앙에 모아주는 컨테이너 */
+.admin-center-box {
+  width: 100%;
+  max-width: 540px;          /* 기도함 박스와 동일한 안정적인 너비 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* 내부 요소들 전부 가운데 정렬 */
+  gap: 20px;
+}
+
+/* (선택) 비밀번호 입력창 정렬 패치 */
+.admin-center-box input[type="password"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background-color: #222;
+  color: #fff;
+  text-align: center;        /* 입력하는 비밀번호도 가운데 정렬 */
+  font-size: 16px;
+  outline: none;
+}
