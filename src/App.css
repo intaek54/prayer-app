@@ -1,184 +1,234 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* 기본 폰트 (나눔스퀘어라운드) */
+@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff');
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* ⭐️ 제목 전용 둥글둥글하고 두꺼운 폰트 (여기어때 잘난체) 추가 */
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.hero {
+* {
+  font-family: 'NanumSquareRound', sans-serif;
+  box-sizing: border-box;
+}
+
+
+
+/* 1. 기본 배경 및 대틀 레이아웃 */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f9ff;
+  font-family: 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 1fr 540px 1fr; 
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.layout-side {
   position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
 }
 
-#center {
+.layout-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 2. 가운데 기도함 박스 */
+.box {
+  background-color: #fdfbf7; 
+  border-radius: 30px; 
+  box-shadow: 0 20px 40px rgba(148, 174, 213, 0.3); 
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 540px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* 언어 토글 버튼 */
+.lang-toggle {
+  text-align: right;
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.lang-toggle span {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.lang-toggle span.active {
+  color: #1e3a8a; 
+}
+
+/* 듬직한 타이틀 폰트 */
+.title {
+  font-family: 'yg-jalnan', sans-serif; 
+  color: #1e3a8a;
+  font-size: 38px; 
+  margin-top: 10px;
+  margin-bottom: 25px; 
+  letter-spacing: -1.5px;
+}
+
+/* 중앙 정렬된 말씀 구절 */
+.subtitle {
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.65;
+  white-space: pre-line; 
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-align: center; 
+  padding: 0 10px;    
+}
+
+/* 입력창 (Textarea) */
+.form {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
+.textarea {
   width: 100%;
+  height: 180px;
+  background-color: #fffdec; 
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 20px;
+  font-size: 16px;
+  color: #1e293b;
+  resize: none;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
 
-  &::before,
-  &::after {
-    content: '';
+.textarea:focus {
+  border-color: #3b82f6; 
+}
+
+/* 보내기 버튼 */
+.submit-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background-color: #2563eb;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* 🌟 [크기 완벽 매칭] 우측 상단 BLUE X SYNC 콜라보 로고 */
+.right-side .collab-header {
+  position: absolute;
+  top: 35px;
+  right: 45px;
+  display: flex;
+  align-items: center;
+  mix-blend-mode: multiply; 
+  z-index: 10;
+}
+
+/* BLUE 로고 크기를 너무 거대하지 않게 안정적으로 고정 */
+.collab-logo.blue {
+  height: 32px; 
+  width: auto;
+  object-fit: contain;
+}
+
+/* 중간 '×' 표시 */
+.collab-x {
+font-size: 18px;
+  color: #1e3a8a;
+  font-weight: 800;
+  margin-left: 24px;  /* 👈 왼쪽 여백을 확 늘려서 X를 우측으로 밉니다 */
+  margin-right: 6px;  /* 👈 오른쪽 여백은 줄여서 Sync 로고에 가깝게 붙입니다 */
+  opacity: 0.6;
+}
+
+/* Sync 로고를 담는 정사각형 가림막 */
+.sync-logo-wrapper {
+  width: 51px;  /* 👈 34px의 딱 1.5배로 키움 */
+  height: 51px; /* 👈 34px의 딱 1.5배로 키움 */
+  overflow: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🌟 핵심 마법: Sync 로고의 투명 여백을 무시하고 알맹이만 3배 강제 확대! */
+.collab-logo.sync {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  transform: scale(3.2); /* 👈 여기서 알맹이를 빵빵하게 키워 블루 로고와 덩치를 맞춥니다 */
+}
+
+/* 📱 모바일 스크린(화면이 좁아질 때)을 위한 유연한 반응형 대응 */
+@media (max-width: 900px) {
+  .app-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .layout-side.left-side {
+    display: none;
+  }
+  
+  .layout-main {
+    width: 100%;
+    max-width: 540px;
+    padding: 0;
+    margin-top: 85px;
+  }
+
+  .layout-side.right-side {
     position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+    top: 0;
+    right: 0;
+    width: 100%;
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  .right-side .collab-header {
+    top: 25px;
+    right: 25px;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+
+  .collab-logo.blue { height: 26px; }
+  .sync-logo-wrapper { width: 42px; height: 42px; }
+  .collab-x { font-size: 14px; margin-left: 16px; margin-right: 4px; }
 }
