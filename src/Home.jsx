@@ -38,44 +38,44 @@ function Home() {
 
   return (
     <div className="app-layout">
-      {/* 1. 왼쪽 빈 공간 (데스크톱 화면 정중앙 정렬용 밸런스 패치) */}
-      <div className="layout-side left-side"></div>
+      
+      {/* 1. 오른쪽 로고 구역 (화면 우측 상단에 무조건 고정되도록 변경) */}
+      <div className="collab-header">
+        <img src="/blue-logo.png" className="collab-logo blue" alt="Blue Logo" />
+        <div className="collab-x">×</div>
+        <div className="sync-logo-wrapper">
+          <img src="/sync-logo.png" className="collab-logo sync" alt="Sync Logo" />
+        </div>
+      </div>
 
       {/* 2. 가운데 진짜 기도함 박스 구역 (줌 150% 효과를 위해 전체 치수 스케일업!) */}
-      <div className="layout-main" style={{ width: '100%', maxWidth: '620px', padding: '20px' }}>
-        <div className="box" style={{ padding: '40px', borderRadius: '24px' }}>
+      <div className="layout-main">
+        <div className="box">
           
           {/* 🌐 다시 살아난 우측 상단 언어 선택 토글 (크기 확대) */}
-          <div className="lang-toggle" style={{ fontSize: '1.1rem', marginBottom: '15px' }}>
+          <div className="lang-toggle">
             <span className={lang === 'KOR' ? 'active' : ''} onClick={() => setLang('KOR')}>KOR</span>
             <span style={{ margin: '0 6px', color: '#cbd5e1' }}>|</span>
             <span className={lang === 'ENG' ? 'active' : ''} onClick={() => setLang('ENG')}>ENG</span>
           </div>
 
-          {/* 타이틀 (기존보다 훨씬 크게 확대) */}
-          <h1 className="title" style={{ fontSize: '2.8rem', marginBottom: '30px', letterSpacing: '-1px' }}>
+          {/* 타이틀 */}
+          <h1 className="title">
             {lang === 'KOR' ? '익명 기도함' : 'Anonymous Prayer'}
           </h1>
           
           {/* 기도 폼 구역 */}
-          <form onSubmit={handleSubmit} className="form" style={{ gap: '20px' }}>
+          <form onSubmit={handleSubmit} className="form">
             <textarea
               className="textarea"
               value={prayer}
               onChange={(e) => setPrayer(e.target.value)}
               placeholder={lang === 'KOR' ? "여기에 기도 제목을 적어주세요..." : "Please write your prayer request here..."}
               required
-              style={{
-                fontSize: '1.3rem',    /* 글자 크기 대폭 확대 */
-                padding: '20px',       /* 안쪽 여유 공간 확대 */
-                minHeight: '220px',    /* 입력창 높이 확대 */
-                borderRadius: '16px',
-                lineHeight: '1.6'
-              }}
             ></textarea>
             
-            {/* 마태복음 말씀 구절 (가독성을 위해 폰트 크기 및 줄바꿈 자간 최적화) */}
-            <p className="subtitle" style={{ fontSize: '1.1rem', lineHeight: '1.7', color: '#64748b', margin: '10px 0' }}>
+            {/* 마태복음 말씀 구절 */}
+            <p className="subtitle">
               {lang === 'KOR' ? (
                 <>
                   진실로 다시 너희에게 이르노니 너희 중에 두 사람이 땅에서 합심하여{"\n"}
@@ -91,17 +91,11 @@ function Home() {
               )}
             </p>
 
-            {/* 보내기 버튼 (큼직하고 누르기 쉽게 벌크업) */}
+            {/* 보내기 버튼 */}
             <button 
               type="submit" 
               className="submit-btn" 
               disabled={isSubmitting || !prayer.trim()}
-              style={{
-                padding: '20px',       /* 버튼 두께 확대 */
-                fontSize: '1.3rem',    /* 버튼 글자 확대 */
-                borderRadius: '16px',
-                fontWeight: 'bold'
-              }}
             >
               {isSubmitting 
                 ? (lang === 'KOR' ? '보내는 중...' : 'Sending...') 
@@ -110,17 +104,6 @@ function Home() {
             </button>
           </form>
 
-        </div>
-      </div>
-
-      {/* 3. 오른쪽 로고 구역 (수정본 유지 + 로고 크기도 살짝 키워 밸런스 패치) */}
-      <div className="layout-side right-side">
-        <div className="collab-header" style={{ transform: 'scale(1.2)', transformOrigin: 'right top' }}>
-          <img src="/blue-logo.png" className="collab-logo blue" alt="Blue Logo" />
-          <div className="collab-x">×</div>
-          <div className="sync-logo-wrapper">
-            <img src="/sync-logo.png" className="collab-logo sync" alt="Sync Logo" />
-          </div>
         </div>
       </div>
 
